@@ -1,4 +1,14 @@
 public class DynamicStringList implements StringList {
+
+  private String[] data;
+  private int size;
+
+  public DynamicStringList() {
+    data = new String[10];
+    size = 0;
+  }
+  
+    
     /**
    * Retrieves the string at the specified index in the list.
    *
@@ -38,7 +48,18 @@ public class DynamicStringList implements StringList {
    * @throws IndexOutOfBoundsException if the index is out of range (index < 0 or index >= size()).
    */
   public String remove(int index) {
+    if (index < 0 || index >= size()) {
+      throw new IndexOutOfBoundsException("Error: index is out of bounds.");
+    }
 
+    String removed = data[index];
+    for (int i = index; i < size() - 1; i++) {
+      // Shift elements to the left;
+        data[i] = data[i + 1];  
+      }
+      size--;
+
+    return removed;
   }
 
   /**
