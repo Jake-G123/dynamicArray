@@ -7,8 +7,7 @@ public class DynamicStringList implements StringList {
     data = new String[10];
     size = 0;
   }
-  
-    
+
     /**
    * Retrieves the string at the specified index in the list.
    *
@@ -17,7 +16,10 @@ public class DynamicStringList implements StringList {
    * @throws IndexOutOfBoundsException if the index is out of range (index < 0 or index >= size()).
    */
   public String get(int index) {
-
+    if (index > size || index < 0) {
+      throw new IndexOutOfBoundsException("Index is out of range.");
+    }
+    return data[index];
   }
 
   /**
@@ -28,7 +30,10 @@ public class DynamicStringList implements StringList {
    * @throws IndexOutOfBoundsException if the index is out of range (index < 0 or index >= size()).
    */
   public void set(int index, String value) {
-
+    if (index > size || index < 0) {
+      throw new IndexOutOfBoundsException("Index is out of range.");
+    }
+    data[index] = value;
   }
 
   /**
@@ -37,7 +42,13 @@ public class DynamicStringList implements StringList {
    * @param value the string to add to the list.
    */
   public void add(String value) {
-
+    if (size == data.length - 1) {
+      String[] temp = new String[data.length];
+      System.arraycopy(data, 0, temp, 0, temp.length);
+      data = new String[temp.length*2];
+      System.arraycopy(temp, 0, data, 0, temp.length);
+    }
+    data[size++] = value;
   }
 
   /**
