@@ -42,20 +42,46 @@ public class DynamicStringListTest {
     String result = test.get(0);
     assertEquals(result, "test1");
   }
-  /*
+  
   @Test
-  public void remove() {
-
+  public void removeTest_removeFirstElement() {
+    DynamicStringList planets = new DynamicStringList();
+    planets.add("Mercury");
+    planets.add("Venus");
+    planets.add("Earth");
+    planets.add("Mars");
+    String removed = planets.remove(0);
+    assertEquals("Mercury", removed);   
   }
 
   @Test
-  public void size() {
-
+  public void removeTest_removeLastElement() {
+    DynamicStringList planets = new DynamicStringList();
+    planets.add("Saturn");
+    planets.add("Uranus");
+    planets.add("Neptune");
+    planets.add("Pluto");
+    String removed = planets.remove(3);
+    assertEquals("Pluto", removed);   
   }
 
   @Test
-  public void capacity() {
-    
+  public void removeTest_removeNonExistentIndex() {
+    DynamicStringList planets = new DynamicStringList();
+    planets.add("Saturn");
+    planets.add("Uranus");
+    planets.add("Neptune");
+    planets.add("Pluto");
+    assertThrows(IndexOutOfBoundsException.class, () -> {
+      planets.remove(4);
+    });
   }
-  */
-}
+
+  @Test
+  public void removeTest_whenStringListIsEmpty() {
+    DynamicStringList planets = new DynamicStringList();
+    assertThrows(IndexOutOfBoundsException.class, () -> {
+      planets.remove(0);
+    });
+  }
+};

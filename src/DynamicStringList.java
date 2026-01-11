@@ -65,9 +65,10 @@ public class DynamicStringList implements StringList {
 
     String removed = data[index];
     for (int i = index; i < size() - 1; i++) {
-      // Shift elements to the left;
+      // Shift elements to the left
         data[i] = data[i + 1];  
       }
+      // Decrease the size of the list
       size--;
 
     return removed;
@@ -78,8 +79,8 @@ public class DynamicStringList implements StringList {
    *
    * @return the size of the list.
    */
-  public int size() {
-
+  public int size() {  
+    return size;
   }
 
   /**
@@ -88,6 +89,6 @@ public class DynamicStringList implements StringList {
    * @return the capacity of the list.
    */
   public int capacity() {
-    
+    return data.length;
   }
 }
