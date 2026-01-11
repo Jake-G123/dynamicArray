@@ -84,4 +84,47 @@ public class DynamicStringListTest {
       planets.remove(0);
     });
   }
+
+  @Test
+  public void sizeTest_testWhenListIsEmpty() {
+    DynamicStringList list = new DynamicStringList();
+    assertEquals(0, list.size());
+  }
+
+  @Test
+  public void sizeTest_addElements() {
+    DynamicStringList list = new DynamicStringList();
+    list.add("coffee");
+    list.add("tea");
+    list.add("chai");
+    assertEquals(3, list.size());
+  }
+
+  @Test
+  public void sizeTest_removeTwoElements() {
+    DynamicStringList list = new DynamicStringList();
+    list.add("coffee");
+    list.add("tea");
+    list.add("chai");
+    list.remove(2);
+    list.remove(1);
+    assertEquals(1, list.size());
+  }
+
+  @Test
+  public void sizeTest_removeMultipleElementsFromSameIndex() {
+    DynamicStringList list = new DynamicStringList();
+    list.add("coffee");
+    list.add("chai");
+    list.add("cappuccino");
+    list.add("tea");
+    list.add("yerba mate");
+    assertEquals(5, list.size());
+    list.remove(2);
+    assertEquals(4, list.size());
+    list.remove(2);
+    assertEquals(3, list.size());
+    list.remove(2);
+    assertEquals(2, list.size());
+  }
 };
