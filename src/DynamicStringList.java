@@ -78,13 +78,6 @@ public class DynamicStringList implements StringList {
    * @return the size of the list.
    */
   public int size() {  
-    int size = 0;
-
-    for (String str : data) {  
-      if (str != null) {
-      size++;
-    }
-  }
     return size;
   }
 
