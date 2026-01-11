@@ -127,4 +127,38 @@ public class DynamicStringListTest {
     list.remove(2);
     assertEquals(2, list.size());
   }
-};
+
+// Expect the default capacity to be ten
+@Test
+public void capacityTest_whenListIsEmpty() {
+  DynamicStringList list = new DynamicStringList();
+  assertEquals(10, list.capacity());
+}
+
+@Test
+public void capacityTest_postInsertion() {
+  DynamicStringList list = new DynamicStringList();
+  list.add("Dynamic");
+  list.add("String");
+  list.add("List");
+  assertEquals(10, list.capacity());
+}
+
+@Test
+public void capacityTest_setSizeTo20AndCapacityToForty() {
+  DynamicStringList list = new DynamicStringList();
+  for (int i = 0; i < 20; i++) {
+    list.add("Element " + i);
+  }
+  assertEquals(40, list.capacity());
+  }
+
+@Test
+public void capacityTest_setSizeToThirtyAndCapacityToForty() {
+  DynamicStringList list = new DynamicStringList();
+  for (int i = 0; i < 30; i++) {
+    list.add("Element " + i);
+  }
+  assertEquals(40, list.capacity());
+  }
+}
